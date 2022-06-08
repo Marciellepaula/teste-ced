@@ -1,0 +1,44 @@
+{% extends './base.html' %} 
+
+{% block title %} Listar Livros {% endblock title %}
+
+{% block content %}
+<div class="card p-4">
+	<h2> Listagem de Livros</h2>
+	<h1>{{ value }}</h1>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Capa do Livro:</th>
+					<th>Nome:</th>
+					<th>Categoria:</th>
+					<th>Autor:</th>
+					<th>Data de Publicação</th>
+					<th>Nº de Páginas</th>
+					<th class="text-center">Ações</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				{% for livro in livros %}
+					<tr>
+						<td>
+							<img src="{{ livro.book_cover }}" width="100px" alt="book_cover" />
+						</td>
+						<td>{{ livro.name }}</td>
+						<td>{{ livro.category }}</td>
+						<td>{{ livro.author }}</td>
+						<td>{{ livro.publication_date }}</td>
+						<td>{{ livro.pages }}</td>
+						<td>
+							<a href="" class="col-12 mt-2 btn btn-warning">editar</a>
+							<a href="" class="col-12 mt-2 btn btn-danger">deletar</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock content %}
