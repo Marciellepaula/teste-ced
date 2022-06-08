@@ -1,0 +1,109 @@
+{% extends './base.html' %} {% block title %} Inserir Livro {% endblock title %}
+{% block content %}
+<div class="card p-4">
+  <h1>Inserir Livro</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mt-2 col-md-12">
+      <label class="form-label" for="{{ form.name.id_for_label }}">Nome:</label>
+      <input
+        class="form-control {% if form.name.errors %} is-invalid {% endif %}"
+        type="text"
+        id="{{ form.name.id_for_label }}"
+        name="{{form.name.html_name}}"
+		value="{% if form.name.value != None %}{{form.name.value}}{% endif %}"
+      />
+      {% if form.name.errors %}
+      <span class="text-danger"> {{ form.name.errors }} </span>
+      {% endif %}
+    </div>
+
+    <div class="mt-2 col-md-12">
+      <label class="form-label" for="{{ form.category.id_for_label }}"
+        >Categoria:</label
+      >
+      <input
+        class="form-control {% if form.category.errors %} is-invalid {% endif %}"
+        type="text"
+        id="{{ form.category.id_for_label }}"
+        name="{{form.category.html_name}}"
+		value="{% if form.category.value != None %}{{form.category.value}}{% endif %}"
+      />
+      {% if form.category.errors %}
+      <span class="text-danger"> {{ form.category.errors }} </span>
+      {% endif %}
+    </div>
+
+    <div class="mt-2 col-md-12">
+      <label class="form-label" for="{{ form.author.id_for_label }}"
+        >Autor:</label
+      >
+      <input
+        class="form-control {% if form.author.errors %} is-invalid {% endif %}"
+        type="text"
+        id="{{ form.author.id_for_label }}"
+        name="{{form.author.html_name}}"
+		value="{% if form.author.value != None %}{{form.author.value}}{% endif %}"
+      />
+      {% if form.author.errors %}
+      <span class="text-danger"> {{ form.author.errors }} </span>
+      {% endif %}
+    </div>
+
+    <div class="row">
+      <div class="mt-2 col-md-6">
+        <label class="form-label" for="{{ form.book_cover.id_for_label }}"
+          >Capa:</label
+        >
+        <input
+          class="form-control {% if form.book_cover.errors %} is-invalid {% endif %}"
+          type="file"
+          accept="image/*"
+          id="{{ form.book_cover.id_for_label }}"
+          name="{{form.book_cover.html_name}}"
+		  value="{% if form.book_cover.value != None %}{{form.book_cover.value}}{% endif %}"
+        />
+        {% if form.book_cover.errors %}
+        <span class="text-danger"> {{ form.book_cover.errors }} </span>
+        {% endif %}
+      </div>
+
+      <div class="mt-2 col-md-3">
+        <label class="form-label" for="{{ form.publication_date.id_for_label }}"
+          >Data de Publicação:</label
+        >
+        <input
+          class="form-control {% if form.publication_date.errors %} is-invalid {% endif %}"
+          type="date"
+          id="{{ form.publication_date.id_for_label }}"
+          name="{{form.publication_date.html_name}}"
+		  value="{% if form.publication_date.value != None %}{{form.publication_date.value}}{% endif %}"
+        />
+        {% if form.publication_date.errors %}
+        <span class="text-danger"> {{ form.publication_date.errors }} </span>
+        {% endif %}
+      </div>
+
+      <div class="mt-2 col-md-3">
+        <label class="form-label" for="{{ form.pages.id_for_label }}"
+          >Nº de Paginas:</label
+        >
+        <input
+          class="form-control {% if form.pages.errors %} is-invalid {% endif %}"
+          type="text"
+          id="{{ form.pages.id_for_label }}"
+          name="{{form.pages.html_name}}"
+		  value="{% if form.pages.value != None %}{{form.pages.value}}{% endif %}"
+        />
+        {% if form.pages.errors %}
+		<span class="text-danger"> {{ form.pages.errors }} </span>
+		{% endif %}
+      </div>
+    </div>
+    <a href="{% url 'listar-livros' %}" class="btn btn-warning mt-3 me-2"
+      >voltar</a
+    >
+    <button class="btn btn-primary mt-3" type="submit">Adicionar</button>
+  </form>
+</div>
+{% endblock content %}

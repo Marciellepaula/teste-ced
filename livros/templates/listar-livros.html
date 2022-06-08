@@ -4,10 +4,12 @@
 
 {% block content %}
 <div class="card p-4">
-	<h2> Listagem de Livros</h2>
-	<h1>{{ value }}</h1>
+	<div class="d-flex justify-content-between align-items-baseline">
+		<h2> Listagem de Livros</h2>
+		<a href="{% url 'adicionar_livro' %}" class="btn btn-primary">Adicionar Livro</a>
+	</div>
 	<div class="table-responsive">
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Capa do Livro:</th>
