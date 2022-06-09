@@ -35,6 +35,10 @@
 						<td>
 							<a href="" class="col-12 mt-2 btn btn-warning">editar</a>
 							<a href="" class="col-12 mt-2 btn btn-danger">deletar</a>
+							<form id="delete-{{livro.id}}" method="post" action="{% url 'deletar-livro' livro.id %}">
+								{% csrf_token %}
+							</form>
+							<button class="col-12 mt-2 btn btn-danger" onclick="deleteLivro('delete-{{livro.id}}')">deletar</button>
 						</td>
 					</tr>
 				{% endfor %}
@@ -44,3 +48,9 @@
 </div>
 
 {% endblock content %}
+
+{% block javascript %}
+	<script>
+		{% include "js/delete.js" %}
+	</script>
+{% endblock javascript %}

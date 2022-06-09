@@ -14,3 +14,9 @@ def inserirLivro(request):
         form.save()
         return redirect('listar-livros')
     return render(request, 'criar-livro.html', {'form': form})
+
+def deletarLivro(request, id):
+    livro = Livro.objects.get(id=id)
+    if request.method == 'POST':
+        livro.delete()
+    return redirect('listar-livros')
