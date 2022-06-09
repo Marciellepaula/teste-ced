@@ -1,0 +1,14 @@
+{% extends './base/base.html' %} 
+
+{% block title %} Inserir Livro {% endblock title %}
+
+{% block content %}
+  <div class="card p-4">
+      <h1>Inserir Livro</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% include "./base/form.html" %}
+        <a href="{% url 'listar-livros' %}" class="btn btn-warning mt-3 me-2">voltar</a>
+        <button class="btn btn-primary mt-3" type="submit">Adicionar</button>
+      </form>
+  </div>
+{% endblock content %}
