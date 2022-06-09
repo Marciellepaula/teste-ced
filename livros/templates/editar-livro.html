@@ -1,0 +1,31 @@
+{% extends './base/base.html' %} 
+
+{% block title %} Editar Livro {% endblock title %}
+
+{% block content %}
+  	<div class="card p-4">
+		<div class="d-flex justify-content-between">
+			<h1>Editar Livro</h1>
+			<button class="mt-3 btn btn-danger" onclick="deleteLivro('delete-{{livro.id}}')">deletar</button>
+		</div>
+		<form id="delete-{{livro.id}}" method="post" action="{% url 'deletar-livro' livro.id %}">
+			{% csrf_token %}
+		</form>
+		<form method="post" enctype="multipart/form-data">
+			{% include "./base/form.html" %}
+			{% if form.book_cover.value != None %}
+				Atualmente:
+				<a href="/{{form.book_cover.value}}" target="_blank">{{form.book_cover.value}}</a>
+				<br>
+			{% endif %}
+			<a href="{% url 'listar-livros' %}" class="btn btn-warning mt-3 me-2">voltar</a>
+			<button class="btn btn-primary mt-3" type="submit">Editar</button>
+		</form>   
+  	</div>
+{% endblock content %}
+
+{% block javascript %}
+	<script>
+		{% include "js/delete.js" %}
+	</script>
+{% endblock javascript %}

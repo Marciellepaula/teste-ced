@@ -33,8 +33,7 @@
 						<td>{{ livro.publication_date }}</td>
 						<td>{{ livro.pages }}</td>
 						<td>
-							<a href="" class="col-12 mt-2 btn btn-warning">editar</a>
-							<a href="" class="col-12 mt-2 btn btn-danger">deletar</a>
+							<a href="{% url 'editar-livro' livro.id %}" class="col-12 mt-2 btn btn-warning">editar</a>
 							<form id="delete-{{livro.id}}" method="post" action="{% url 'deletar-livro' livro.id %}">
 								{% csrf_token %}
 							</form>
